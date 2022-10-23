@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace gestionGarage
 {
-    internal class Vehicule
+    internal abstract class Vehicule
     {
     }
 }
