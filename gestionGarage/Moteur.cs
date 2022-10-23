@@ -8,5 +8,10 @@ namespace gestionGarage
 {
     internal class Moteur
     {
+        private static int incremnet;
+        private int id;
+        private string nom;
+        private int puissance;
+
     }
 }
