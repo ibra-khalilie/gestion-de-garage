@@ -29,7 +29,7 @@ namespace gestionGarage
 
         public void AjouterOption(Option Option) { }
 
-        public decimal CalculerTaxe() { return 0; }
+        public abstract decimal CalculerTaxe();
 
         public decimal PrixTotal() { return 0.0m; }
 
