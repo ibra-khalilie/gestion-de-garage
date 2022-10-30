@@ -16,7 +16,7 @@ namespace gestionGarage
 
         private readonly int prixTaxe = 50;
 
-        public Camion(int id, string nom, decimal prixHT, Marque marque, int nbEssieu, int poid, int volume) :
+        public Camion(string nom, decimal prixHT, Marque marque, int nbEssieu, int poid, int volume) :
             base(nom, prixHT, marque)
         {
             this.NbEssieu = nbEssieu;
@@ -32,6 +32,15 @@ namespace gestionGarage
             return this.NbEssieu * prixTaxe;
         }
 
+
+        public override string ToString()
+        {          
+            return "Nom  : " + nom + "\n" +
+                   "Prix Hors Taxe :" + nom + "\n" +
+                   "Marque : " + marque + "\n" +
+                   "Volume : " + Volume + "\n" +
+                   "Nombre Essieux : " + NbEssieu;
+        }
 
 
         public int NbEssieu { get => nbEssieu; set => nbEssieu = value; }

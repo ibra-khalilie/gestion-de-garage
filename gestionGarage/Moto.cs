@@ -18,11 +18,15 @@ namespace gestionGarage
             : base( nom, prixHT, marque)
         {
             this.Cylindre = cylindre;
+            id++;
         }
 
         public override decimal CalculerTaxe()
         {
             throw new NotImplementedException();
         }
+
+   
+
     }
 }

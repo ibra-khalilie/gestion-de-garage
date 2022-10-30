@@ -34,11 +34,12 @@ namespace gestionGarage
 
         public override string ToString()
         {
-            return "indentifiant Voiture :" + id+"\n" +
-                   "puissance cheveaux fiscaux : "+chevauxFiscaux+"\n" +
-                   "nombre de portes : "+NbPorte+"\n" +
-                   "nombre de siège : "+NbSiege;
-
+            return "Nom : " + nom + "\n" +
+                   "Prix Hors Taxe :" + marque + "\n" +
+                   "Indentifiant Voiture :" + id + "\n" +
+                   "Puissance cheveaux fiscaux : " + chevauxFiscaux + "\n" +
+                   "Nombre de portes : " + NbPorte + "\n" +
+                   "Nombre de siège : " + NbSiege + "\n";
         }
 
 

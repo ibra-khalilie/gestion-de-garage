@@ -20,7 +20,12 @@ namespace gestionGarage
         public void  AjouterVehivule(Vehicule vehicule){
             vehicules.Add(vehicule);
         }
-        public void Afficher() { }
+        public void Afficher() {
+
+            foreach (Vehicule vehicule in vehicules) {
+                //Console.WriteLine(vehicule
+            }
+        }
 
         public void AfficherVoiture() { }
 
