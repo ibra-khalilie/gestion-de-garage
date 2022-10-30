@@ -15,9 +15,9 @@ namespace gestionGarage
         private decimal prix;
 
 
-        public Option(int id, string nom, decimal prix)
+        public Option( string nom, decimal prix)
         {
-            this.id = id;
+        
             this.nom = nom;
             this.prix = prix;
         }

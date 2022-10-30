@@ -9,14 +9,14 @@ namespace gestionGarage
     internal abstract class Vehicule
     {
         private static int increment;
-        private int id;
-        private string nom;
-        private decimal prixHT;
-        private Marque marque;
+        protected int id;
+        protected string nom;
+        protected decimal prixHT;
+        protected Marque marque;
 
-        public Vehicule(int id, string nom, decimal prixHT, Marque marque)
+        public Vehicule(string nom, decimal prixHT, Marque marque)
         {
-            this.id = id;
+        
             this.nom = nom;
             this.prixHT = prixHT;
             this.marque = marque;
@@ -30,6 +30,7 @@ namespace gestionGarage
         public void AjouterOption(Option Option) { }
 
         public abstract decimal CalculerTaxe();
+   
 
         public decimal PrixTotal() { return 0.0m; }
 

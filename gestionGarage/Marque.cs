@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace gestionGarage
 {
-    internal class Marque
+    internal enum Marque
     {
+        peugot,
+        renault,
+        citroen,
+        audi,
+        ferrai
     }
 }
