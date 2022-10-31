@@ -8,7 +8,6 @@ namespace gestionGarage
 {
     internal enum TypeMoteur
     {
-
        diesel,
        essence,
        hybride,

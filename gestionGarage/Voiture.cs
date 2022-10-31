@@ -14,63 +14,43 @@ namespace gestionGarage
         private int nbPorte;
         private int tailleCoffre;
         private int nbSiege;
-        private static new int id = 1 ;
+        //private static new int id = 1 ;
         private readonly int prixTaxe = 10;
-        public Voiture(string nom, decimal prixHT, Marque marque,int tailleCofrfre, int nbSiege, int nbPorte) : 
-            base(nom, prixHT, marque)
+        public Voiture(string nom, decimal prixHT,Marque marque,string nomMoteur,int puissance, TypeMoteur type,int tailleCofre, int cheveauxFiscaux, int nbSiege, int nbPorte) : 
+            base(nom, prixHT, marque,nomMoteur,puissance,type)
         {
-                this.TailleCoffre = tailleCofrfre;
+                this.TailleCoffre = tailleCofre;
                 this.NbSiege = nbSiege;
                 this.NbPorte = nbPorte;
-                id++;
-
+                this.chevauxFiscaux = cheveauxFiscaux;
+       
         }
 
+        //modificateurs d'accèes 
+        public int ChevauxFiscaux{ get => chevauxFiscaux; set => chevauxFiscaux = value; }
+        public int NbPorte{ get => nbPorte; set => nbPorte = value; }
+        public int NbSiege{ get => nbSiege; set => nbSiege = value; }
+        public int TailleCoffre{ get => tailleCoffre; set => tailleCoffre = value; }
 
         public override decimal CalculerTaxe()
         {
             return this.chevauxFiscaux * prixTaxe;
         }
 
-        public override string ToString()
+        public override void Afficher()
         {
-            return "Nom : " + nom + "\n" +
-                   "Prix Hors Taxe :" + marque + "\n" +
-                   "Indentifiant Voiture :" + id + "\n" +
-                   "Puissance cheveaux fiscaux : " + chevauxFiscaux + "\n" +
-                   "Nombre de portes : " + NbPorte + "\n" +
-                   "Nombre de siège : " + NbSiege + "\n";
+            base.Afficher();
+            Console.WriteLine("Nom de Voiture : {0} ", nom);
+            Console.WriteLine("Prix Hors Taxe : {0:0.00} ", prixHT);
+            Console.WriteLine("Puissance cheveaux fiscaux : {0} ", chevauxFiscaux);
+            Console.WriteLine("Marque : {0} ", marque);
+            Console.WriteLine("Nombre de portes : {0} ", NbPorte);
+            Console.WriteLine("Nombre de siège : {0} ", NbSiege);
+            Console.WriteLine("Taille du Confre : {0}m3 ", TailleCoffre);
+            Console.WriteLine("Taxe du Voiture : {0:0.00} ", CalculerTaxe());
+            Console.WriteLine("***************************************");
         }
 
-
-
-
-        //modificateurs d'accèes 
-        public int ChevauxFiscaux
-        {
-            get => chevauxFiscaux;
-            set => chevauxFiscaux = value;
-        }
-
-
-        public int NbPorte
-        {
-            get => nbPorte;
-            set => nbPorte = value;
-        }
-
-
-        public int NbSiege
-        {
-            get => nbSiege;
-            set => nbSiege = value;
-        }
-
-        public int TailleCoffre
-        {
-            get => tailleCoffre;
-            set => tailleCoffre = value;
-        }
 
 
     }
