@@ -11,8 +11,6 @@ namespace gestionGarage
         private string nom;
 
         private List<Vehicule> vehicules;
-
-
     
         public Garage(string nom)
         {

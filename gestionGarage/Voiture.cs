@@ -14,8 +14,9 @@ namespace gestionGarage
         private int nbPorte;
         private int tailleCoffre;
         private int nbSiege;
-        //private static new int id = 1 ;
-        private readonly int prixTaxe = 10;
+        private readonly decimal prixTaxe = 10m;
+
+
         public Voiture(string nom, decimal prixHT,Marque marque,string nomMoteur,int puissance, TypeMoteur type,int tailleCofre, int cheveauxFiscaux, int nbSiege, int nbPorte) : 
             base(nom, prixHT, marque,nomMoteur,puissance,type)
         {
@@ -25,7 +26,7 @@ namespace gestionGarage
                 this.chevauxFiscaux = cheveauxFiscaux;
        
         }
-
+        
         //modificateurs d'accèes 
         public int ChevauxFiscaux{ get => chevauxFiscaux; set => chevauxFiscaux = value; }
         public int NbPorte{ get => nbPorte; set => nbPorte = value; }
@@ -34,7 +35,7 @@ namespace gestionGarage
 
         public override decimal CalculerTaxe()
         {
-            return this.chevauxFiscaux * prixTaxe;
+            return this.ChevauxFiscaux * prixTaxe;
         }
 
         public override void Afficher()

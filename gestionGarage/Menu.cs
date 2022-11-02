@@ -1,24 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using static System.Collections.Specialized.BitVector32;
 
 namespace gestionGarage
 {
-    internal class Menu
+    internal class Menu : Exception
     {
+       
         private Garage garage;
-
 
         public Menu(Garage garage)
         {
             this.Garage = garage;
 
-      
-        }
 
+        }
+       
 
         public void Start()
         {
@@ -27,7 +28,7 @@ namespace gestionGarage
             while (choixMenu != 13)
             {
                 AfficherMenu(garage);
-                choixMenu = Convert.ToInt32(Console.ReadLine());
+                choixMenu = getChoix();
 
                 try
                 {
@@ -41,7 +42,7 @@ namespace gestionGarage
  
                             break;
                         case 3:
-
+                            getChoix();
                             break;
                         case 4:
 
@@ -278,6 +279,24 @@ namespace gestionGarage
             }
             return choixMoteur;
         }
+
+
+        public int getChoix()
+        {
+            int choixUser = 0;
+         
+                try{
+                    choixUser =  Convert.ToInt32(Console.ReadLine());
+
+                }catch(FormatException)
+                  {
+                    Console.WriteLine ("le choix saisit n'est pas un nombre");
+                  }
+
+            return choixUser;
+
+        }
+
 
 
 

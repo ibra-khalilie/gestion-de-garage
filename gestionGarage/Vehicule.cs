@@ -12,18 +12,12 @@ namespace gestionGarage
         protected int id;
         protected string nom;
         protected decimal prixHT;
-
-        //normalement pas de protected ici
         protected Marque marque;
         protected Moteur moteur;
-
-
-      //  private Marque marque;
-      //  private Moteur moteur;
-
-
         protected List<Option> options = new List<Option>();
         protected List<Moteur> moteurs = new List<Moteur>();
+
+     
         public Vehicule(string nom, decimal prixHT, Marque marque,string nomMoteur, int puissance, TypeMoteur type)
         {
             increment++;
@@ -69,14 +63,18 @@ namespace gestionGarage
 
         public decimal PrixTotal() {
 
-            decimal resultat =0 ;
+            decimal resultat = 0.00m ;
             foreach (Option option in options)
             {
                 resultat = option.Prix + prixHT ;
             }
             
+
+
+
             return resultat;
         }
+
 
         public int CompareTo(object obj)
         {

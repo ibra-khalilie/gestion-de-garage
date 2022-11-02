@@ -13,14 +13,14 @@ namespace gestionGarage
         private int poid;
         private int volume;
 
-        private readonly int prixTaxe = 50;
+        private readonly decimal prixTaxe = 50m;
 
         public Camion(string nom, decimal prixHT, Marque marque, string nomMoteur, int puissance, TypeMoteur type, int nbEssieu, int poid, int volume) :
             base(nom, prixHT, marque,nomMoteur,puissance,type)
         {
-            this.nbEssieu = nbEssieu;
-            this.poid = poid;
-            this.volume = volume;
+            this.NbEssieu = nbEssieu;
+            this.Poid = poid;
+            this.Volume = volume;
          }
 
         public int NbEssieu { get => nbEssieu; set => nbEssieu = value; }
