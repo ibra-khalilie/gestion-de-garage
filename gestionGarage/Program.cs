@@ -11,8 +11,8 @@ namespace gestionGarage
     {
         static void Main(string[] args)
         {
-             new Menu(new Garage("Go"));
-
+             new Menu(new Garage("Go")).Start();
+             
             /*
             Option o1 = new Option("bbb", 200);
             Option o2 = new Option("PP", 400);

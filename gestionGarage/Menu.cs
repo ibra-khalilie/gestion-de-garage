@@ -16,6 +16,12 @@ namespace gestionGarage
         {
             this.Garage = garage;
 
+      
+        }
+
+
+        public void Start()
+        {
             int choixMenu = 0;
 
             while (choixMenu != 13)
@@ -71,7 +77,6 @@ namespace gestionGarage
                 }
             }
         }
-
 
         public static void AfficherMenu(Garage garage)
         {
