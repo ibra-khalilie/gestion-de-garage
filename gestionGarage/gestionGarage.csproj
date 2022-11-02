@@ -46,6 +46,7 @@
     <Compile Include="Camion.cs" />
     <Compile Include="Garage.cs" />
     <Compile Include="Marque.cs" />
+    <Compile Include="Menu.cs" />
     <Compile Include="Moteur.cs" />
     <Compile Include="Moto.cs" />
     <Compile Include="Option.cs" />

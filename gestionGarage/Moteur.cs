@@ -14,7 +14,7 @@ namespace gestionGarage
         private string nom;
         private int puissance;
         private TypeMoteur type;
-        //ess
+
 
         public Moteur(string nom , int puissance, TypeMoteur type)
         {

@@ -1,0 +1,8 @@
+D:\PROJET_IPI\.NET\gestion-de-garage\gestionGarage\bin\Debug\gestionGarage.exe.config
+D:\PROJET_IPI\.NET\gestion-de-garage\gestionGarage\bin\Debug\gestionGarage.exe
+D:\PROJET_IPI\.NET\gestion-de-garage\gestionGarage\bin\Debug\gestionGarage.pdb
+D:\PROJET_IPI\.NET\gestion-de-garage\gestionGarage\obj\Debug\gestionGarage.csproj.AssemblyReference.cache
+D:\PROJET_IPI\.NET\gestion-de-garage\gestionGarage\obj\Debug\gestionGarage.csproj.SuggestedBindingRedirects.cache
+D:\PROJET_IPI\.NET\gestion-de-garage\gestionGarage\obj\Debug\gestionGarage.csproj.CoreCompileInputs.cache
+D:\PROJET_IPI\.NET\gestion-de-garage\gestionGarage\obj\Debug\gestionGarage.exe
+D:\PROJET_IPI\.NET\gestion-de-garage\gestionGarage\obj\Debug\gestionGarage.pdb

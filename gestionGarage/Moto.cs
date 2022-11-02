@@ -23,6 +23,7 @@ namespace gestionGarage
 
         public override decimal CalculerTaxe()
         {
+            //Pourquoi de coversion normalement on a besoin de la somme en decimal
             return Convert.ToInt32(Cylindre * prixTaxe); ;
         }
 
@@ -31,7 +32,7 @@ namespace gestionGarage
             base.Afficher();
             Console.WriteLine("Nom de Voiture : {0} ", nom);
             Console.WriteLine("Prix Hors Taxe : {0:0.00} ", prixHT);
-            Console.WriteLine("Marque : {0} ", marque);
+           // Console.WriteLine("Marque : {0} ", marque);
             Console.WriteLine("Cylindre : {0} ", Cylindre);
             Console.WriteLine("Taxe du Moto : {0:0.00} ", CalculerTaxe());
             Console.WriteLine("***************************************");
