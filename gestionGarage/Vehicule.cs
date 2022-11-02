@@ -6,14 +6,21 @@ using System.Threading.Tasks;
 
 namespace gestionGarage
 {
-    internal abstract class Vehicule
+    internal abstract class Vehicule : IComparable
     {
         private static int increment = 0;
         protected int id;
         protected string nom;
         protected decimal prixHT;
+
+        //normalement pas de protected ici
         protected Marque marque;
         protected Moteur moteur;
+
+
+      //  private Marque marque;
+      //  private Moteur moteur;
+
 
         protected List<Option> options = new List<Option>();
         protected List<Moteur> moteurs = new List<Moteur>();
@@ -24,6 +31,8 @@ namespace gestionGarage
             this.nom = nom;
             this.prixHT = prixHT;
             this.marque = marque;
+
+            //A discuter
             moteur = new Moteur(nomMoteur,puissance, type);
             moteurs.Add(moteur);
             
@@ -69,7 +78,18 @@ namespace gestionGarage
             return resultat;
         }
 
+        public int CompareTo(object obj)
+        {
 
+            if (obj == null) return 1;
+
+            Vehicule vehicule = obj as Vehicule;
+            if (vehicule != null)
+                //A voir verfier le calcul du prix pour une meilleur comparaison
+                return  this.PrixTotal().CompareTo(vehicule.PrixTotal());
+            else
+                throw new ArgumentException("l'objet n'est pas un vehicule");
+        }
     }
 
 }
