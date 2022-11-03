@@ -13,31 +13,37 @@ namespace gestionGarage
         protected string nom;
         protected decimal prixHT;
 
-        //normalement pas de protected ici
+      
+       
         protected Marque marque;
         protected Moteur moteur;
 
-
-      //  private Marque marque;
-      //  private Moteur moteur;
-
+     
 
         protected List<Option> options = new List<Option>();
         protected List<Moteur> moteurs = new List<Moteur>();
         public Vehicule(string nom, decimal prixHT, Marque marque,string nomMoteur, int puissance, TypeMoteur type)
         {
             increment++;
-            this.id = increment;
-            this.nom = nom;
-            this.prixHT = prixHT;
+            this.Id = increment;
+            this.Nom = nom;
+            this.PrixHT = prixHT;
             this.marque = marque;
 
             //A discuter
             moteur = new Moteur(nomMoteur,puissance, type);
             moteurs.Add(moteur);
             
-        }  
-       
+        }
+
+        public int Id { get => id; set => id = value; }
+        public string Nom { get => nom; set => nom = value; }
+        public decimal PrixHT { get => prixHT; set => prixHT = value; }
+        public Marque Marque { get => marque; set => marque = value; }
+        public Moteur Moteur { get => moteur; set => moteur = value; }
+
+
+
         //les differenrs types de methodes
         public void AfficherOptions() {
             foreach (Option option in options)
@@ -47,18 +53,7 @@ namespace gestionGarage
                 
         }
 
-        public virtual void Afficher() {
-
-            Console.WriteLine("***************************************");
-            Console.WriteLine("Vehicule: {0} ", id);
-            AfficherOptions();
-            foreach (Moteur moteur in moteurs)
-            {
-                moteur.Afficher();
-            }
-
-           
-        }
+        public abstract void Afficher();
 
         public void AjouterOption(Option option) {
             options.Add(option);
@@ -69,13 +64,13 @@ namespace gestionGarage
 
         public decimal PrixTotal() {
 
-            decimal resultat =0 ;
+            decimal TotalOption = 0 ;
             foreach (Option option in options)
             {
-                resultat = option.Prix + prixHT ;
+                TotalOption += option.Prix;
             }
             
-            return resultat;
+            return TotalOption + CalculerTaxe() + PrixHT;
         }
 
         public int CompareTo(object obj)
@@ -90,6 +85,10 @@ namespace gestionGarage
             else
                 throw new ArgumentException("l'objet n'est pas un vehicule");
         }
+
+
+
+
     }
 
 }

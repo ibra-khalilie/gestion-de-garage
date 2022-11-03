@@ -13,13 +13,13 @@ namespace gestionGarage
         {
              new Menu(new Garage("Go"));
 
-            /*
-            Option o1 = new Option("bbb", 200);
+            
+            /*Option o1 = new Option("bbb", 200);
             Option o2 = new Option("PP", 400);
             Option o3 = new Option("Ff", 500);
             Option o4 = new Option("dd", 500);
             Option o5 = new Option("tt", 500);
-            Voiture v = new Voiture("voiture1",200,Marque.peugot, "moteur1", 2000,TypeMoteur.electrique,20,100,6,5);
+            Voiture v = new Voiture("voiture1",200,Marque.peugot, "moteur1", 2000,TypeMoteur.electrique,20,100,6,10);
             v.AjouterOption(o1);
             v.AjouterOption(o2);
             v.PrixTotal();
@@ -41,7 +41,7 @@ namespace gestionGarage
 
             //gestion de garage
 
-            Garage  garage = new Garage("Go Garage");
+           /* Garage  garage = new Garage("Go Garage");
 
       
             

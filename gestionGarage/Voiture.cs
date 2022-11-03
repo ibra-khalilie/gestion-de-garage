@@ -28,7 +28,23 @@ namespace gestionGarage
 
         //modificateurs d'accèes 
         public int ChevauxFiscaux{ get => chevauxFiscaux; set => chevauxFiscaux = value; }
-        public int NbPorte{ get => nbPorte; set => nbPorte = value; }
+        public int NbPorte
+        { 
+            get => nbPorte;
+            set
+            {
+
+                if (value < 9)
+                {
+                    nbPorte = value;
+                }
+                else
+                {
+                    Console.WriteLine("Erreur");
+                }
+                
+            }
+        }
         public int NbSiege{ get => nbSiege; set => nbSiege = value; }
         public int TailleCoffre{ get => tailleCoffre; set => tailleCoffre = value; }
 
@@ -39,15 +55,22 @@ namespace gestionGarage
 
         public override void Afficher()
         {
-            base.Afficher();
-            Console.WriteLine("Nom de Voiture : {0} ", nom);
-            Console.WriteLine("Prix Hors Taxe : {0:0.00} ", prixHT);
-            Console.WriteLine("Puissance cheveaux fiscaux : {0} ", chevauxFiscaux);
-            Console.WriteLine("Marque : {0} ", marque);
+            Console.WriteLine("***************************************");
+            Console.WriteLine("Matricule du Vehicule: {0} ", Id);
+            Console.WriteLine("Nom de Voiture : {0} ", Nom);
+            Console.WriteLine("Prix Hors Taxe : {0:0.00} ", PrixHT);
+            Console.WriteLine("Puissance cheveaux fiscaux : {0} ", ChevauxFiscaux);
+            Console.WriteLine("Marque : {0} ", Marque);
             Console.WriteLine("Nombre de portes : {0} ", NbPorte);
             Console.WriteLine("Nombre de siège : {0} ", NbSiege);
             Console.WriteLine("Taille du Confre : {0}m3 ", TailleCoffre);
-            Console.WriteLine("Taxe du Voiture : {0:0.00} ", CalculerTaxe());
+            foreach (Moteur moteur in moteurs)
+            {
+                moteur.Afficher();
+            }
+            AfficherOptions();
+            Console.WriteLine("Taxe : {0:0.00} ", CalculerTaxe());
+            Console.WriteLine("Prix Total : {0:0.00} ", PrixTotal());
             Console.WriteLine("***************************************");
         }
 

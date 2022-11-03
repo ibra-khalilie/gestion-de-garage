@@ -18,20 +18,21 @@ namespace gestionGarage
         public Option(string nom, decimal prix)
         {
             increment++;
-            this.id = increment;
-            this.nom = nom;
-            this.prix = prix;
+            this.Id = increment;
+            this.Nom = nom;
+            this.Prix = prix;
         }
         
-        public decimal Prix { get => prix; }
+        public int Id { get => id; set => id = value; }
+        public decimal Prix { get => prix; set => prix = value; }
+        public string Nom { get => nom; set => nom = value; }
+       
 
         public void Afficher()
         {
-            Console.WriteLine("--------------------------");
-            Console.WriteLine("Option : {0}", id);
-            Console.WriteLine("Nom d'Option : {0}", nom);
-            Console.WriteLine("Prix d'Option : {0:0.00}", prix);
-            Console.WriteLine("--------------------------");
+            Console.WriteLine("\nNumero d'Option : {0}", Id);
+            Console.WriteLine("Nom d'Option : {0}", Nom);
+            Console.WriteLine("Prix d'Option : {0:0.00}\ns", Prix);
         }
 
 

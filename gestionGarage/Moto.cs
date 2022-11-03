@@ -29,12 +29,18 @@ namespace gestionGarage
 
         public override void Afficher()
         {
-            base.Afficher();
-            Console.WriteLine("Nom de Voiture : {0} ", nom);
-            Console.WriteLine("Prix Hors Taxe : {0:0.00} ", prixHT);
-           // Console.WriteLine("Marque : {0} ", marque);
+            Console.WriteLine("***************************************");
+            Console.WriteLine("Matricule du Vehicule: {0} ", Id);
+            Console.WriteLine("Nom de Voiture : {0} ", Nom);
+            Console.WriteLine("Prix Hors Taxe : {0:0.00} ", PrixHT);
+            Console.WriteLine("Marque : {0} ", Marque);
             Console.WriteLine("Cylindre : {0} ", Cylindre);
+            foreach (Moteur moteur in moteurs)
+            {
+                moteur.Afficher();
+            }
             Console.WriteLine("Taxe du Moto : {0:0.00} ", CalculerTaxe());
+            Console.WriteLine("Prix Total : {0:0.00} ", PrixTotal());
             Console.WriteLine("***************************************");
         }
 
