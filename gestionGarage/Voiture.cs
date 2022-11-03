@@ -40,18 +40,23 @@ namespace gestionGarage
 
         public override void Afficher()
         {
-            base.Afficher();
-            Console.WriteLine("Nom de Voiture : {0} ", nom);
-            Console.WriteLine("Prix Hors Taxe : {0:0.00} ", prixHT);
-            Console.WriteLine("Puissance cheveaux fiscaux : {0} ", chevauxFiscaux);
-            Console.WriteLine("Marque : {0} ", marque);
-            Console.WriteLine("Nombre de portes : {0} ", NbPorte);
-            Console.WriteLine("Nombre de siège : {0} ", NbSiege);
-            Console.WriteLine("Taille du Confre : {0}m3 ", TailleCoffre);
-            Console.WriteLine("Taxe du Voiture : {0:0.00} ", CalculerTaxe());
-            Console.WriteLine("***************************************");
+       
+            Console.WriteLine(
+
+                              "Nom de Voiture : {0} ", Nom,
+                              "Prix    dzd  gg Hors Taxe : {0:0.00} ", prixHT,
+                              "Puissance cheveaux fiscaux : {0} ", chevauxFiscaux,
+                              "Marque : {0} ", marque,
+                              "Nombre de portes : {0} ", NbPorte,
+                              "Nombre de siège : {0} ", NbSiege,
+                              "Taille du Confre : {0}m3 ", TailleCoffre,
+                              "Taxe du Voiture : {0:0.00} ", CalculerTaxe());
+                             // base.Afficher();
+       
         }
 
+
+        public string Nom { get => base.Nom; set => base.Nom = value; }
 
 
     }

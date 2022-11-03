@@ -8,7 +8,7 @@ namespace gestionGarage
 {
     internal class Camion : Vehicule
     {
-
+   
         private int nbEssieu;
         private int poid;
         private int volume;
@@ -31,11 +31,11 @@ namespace gestionGarage
         {
             return this.NbEssieu * prixTaxe;
         }
-
+        
         public override void Afficher()
         {
             base.Afficher();
-            Console.WriteLine("Nom de Voiture : {0} ", nom);
+            Console.WriteLine("Nom de Voiture: {0} ", Nom);
             Console.WriteLine("Prix Hors Taxe : {0:0.00} ", prixHT);
             Console.WriteLine("Nombre de Essieux : {0} ", NbEssieu);
             Console.WriteLine("Marque : {0} ", marque);

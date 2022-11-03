@@ -13,6 +13,7 @@ namespace gestionGarage
         private int cylindre;
 
         public int Cylindre { get => cylindre; set => cylindre = value; }
+        public int Cylindre1 { get => cylindre; set => cylindre = value; }
 
         public Moto( string nom, decimal prixHT, Marque marque,int cylindre, string nomMoteur, int puissance, TypeMoteur type)
             : base( nom, prixHT, marque,nomMoteur,puissance,type)
@@ -29,13 +30,16 @@ namespace gestionGarage
 
         public override void Afficher()
         {
+          
+            Console.WriteLine(@"
+            Identifiant du vehicule : {
+            Nom : {0} 
+            Prix Hors Taxe : {0:0.00} 
+            Marque : {0} 
+            Cylindre : {0} 
+            Taxe du Moto : {0:0.00} ",Nom,prixHT,marque,cylindre, CalculerTaxe());
             base.Afficher();
-            Console.WriteLine("Nom de Voiture : {0} ", nom);
-            Console.WriteLine("Prix Hors Taxe : {0:0.00} ", prixHT);
-            Console.WriteLine("Marque : {0} ", marque);
-            Console.WriteLine("Cylindre : {0} ", Cylindre);
-            Console.WriteLine("Taxe du Moto : {0:0.00} ", CalculerTaxe());
-            Console.WriteLine("***************************************");
+
         }
 
 

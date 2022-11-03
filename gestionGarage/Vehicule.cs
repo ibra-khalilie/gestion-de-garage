@@ -9,20 +9,21 @@ namespace gestionGarage
     internal abstract class Vehicule : IComparable
     {
         private static int increment = 0;
-        protected int id;
-        protected string nom;
+        private int id;
+        private string nom;
         protected decimal prixHT;
         protected Marque marque;
         protected Moteur moteur;
         protected List<Option> options = new List<Option>();
         protected List<Moteur> moteurs = new List<Moteur>();
 
-     
+       
+
         public Vehicule(string nom, decimal prixHT, Marque marque,string nomMoteur, int puissance, TypeMoteur type)
         {
             increment++;
-            this.id = increment;
-            this.nom = nom;
+            this.Id = increment;
+            this.Nom = nom;
             this.prixHT = prixHT;
             this.marque = marque;
 
@@ -43,15 +44,16 @@ namespace gestionGarage
 
         public virtual void Afficher() {
 
-            Console.WriteLine("***************************************");
-            Console.WriteLine("Vehicule: {0} ", id);
-            AfficherOptions();
+           // Console.WriteLine(@"
+           // Identifiant du vehicule : {0} ", id);
+       
             foreach (Moteur moteur in moteurs)
             {
                 moteur.Afficher();
             }
+            AfficherOptions();
 
-           
+
         }
 
         public void AjouterOption(Option option) {
@@ -88,6 +90,12 @@ namespace gestionGarage
             else
                 throw new ArgumentException("l'objet n'est pas un vehicule");
         }
+
+        public string Nom { get => nom; set => nom = value; }
+        public int Id { get => id; set => id = value; }
+        public List<Option> Options { get => options; set => options = value; }
     }
+
+
 
 }

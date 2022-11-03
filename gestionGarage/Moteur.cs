@@ -14,7 +14,7 @@ namespace gestionGarage
         private string nom;
         private int puissance;
         private TypeMoteur type;
-
+   
 
         public Moteur(string nom , int puissance, TypeMoteur type)
         {
@@ -29,12 +29,13 @@ namespace gestionGarage
         public void Afficher()
         {
 
-            Console.WriteLine("--------------------------");
-            Console.WriteLine("Numero du moteur : {0}", id);
-            Console.WriteLine("Nom du moteur : {0}", nom);
-            Console.WriteLine("Puissance : {0}", puissance);
-            Console.WriteLine("Type de motteur : {0}", type);
-            Console.WriteLine("--------------------------");
+
+            Console.WriteLine(@"
+            Numero du moteur : {0}
+            Nom du moteur : {0}
+            Puissance : {0}
+            Type de motteur : {0}",id,nom,puissance, type
+           );
         }
 
     }
