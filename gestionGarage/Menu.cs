@@ -142,6 +142,8 @@ namespace gestionGarage
 
         public Vehicule GestionEntreeVoiture()
         {
+
+            
             Console.Write("Entrer le nom de la voiture : ");
             string nom = Console.ReadLine();
 
@@ -164,6 +166,7 @@ namespace gestionGarage
 
             int cofrre = Convert.ToInt32(Console.ReadLine());
             Console.Write("Entrer le nombre de cheveaux fiscaux :");
+
 
             int cFiscaux = Convert.ToInt32(Console.ReadLine());
             Console.Write("Entrer le nombre de siège ");

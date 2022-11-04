@@ -86,6 +86,20 @@ namespace gestionGarage
                 throw new ArgumentException("l'objet n'est pas un vehicule");
         }
 
+        public int SetGetControl(int val,int min , int max)
+        {
+            int value = val;
+
+            while(value < min || value > max)
+            {
+                Console.WriteLine("Erreur : entre {0} et {1} ", min, max);
+                value = Convert.ToInt32(Console.ReadLine());
+
+            }
+
+            return value;
+        }
+
 
 
 

@@ -16,6 +16,9 @@ namespace gestionGarage
         private int nbSiege;
         //private static new int id = 1 ;
         private readonly int prixTaxe = 10;
+
+       
+
         public Voiture(string nom, decimal prixHT,Marque marque,string nomMoteur,int puissance, TypeMoteur type,int tailleCofre, int cheveauxFiscaux, int nbSiege, int nbPorte) : 
             base(nom, prixHT, marque,nomMoteur,puissance,type)
         {
@@ -26,6 +29,10 @@ namespace gestionGarage
        
         }
 
+     
+
+
+
         //modificateurs d'accèes 
         public int ChevauxFiscaux{ get => chevauxFiscaux; set => chevauxFiscaux = value; }
         public int NbPorte
@@ -33,20 +40,29 @@ namespace gestionGarage
             get => nbPorte;
             set
             {
+                //On considere que une voiture ne peut avoir moins deux porte et plus 2 porte
+                nbPorte = SetGetControl(value,2,6);
 
-                if (value < 9)
-                {
-                    nbPorte = value;
-                }
-                else
-                {
-                    Console.WriteLine("Erreur");
-                }
-                
             }
         }
-        public int NbSiege{ get => nbSiege; set => nbSiege = value; }
-        public int TailleCoffre{ get => tailleCoffre; set => tailleCoffre = value; }
+
+        public int NbSiege
+        { 
+            get => nbSiege;
+            set
+            {
+                //Pareil
+                nbSiege = SetGetControl(value, 2, 50);
+            } 
+        }
+        public int TailleCoffre
+        {  
+            get => tailleCoffre;
+            set
+            {
+                tailleCoffre = SetGetControl(value, 100, 600);
+            } 
+        }
 
         public override decimal CalculerTaxe()
         {
@@ -73,6 +89,7 @@ namespace gestionGarage
             Console.WriteLine("Prix Total : {0:0.00} ", PrixTotal());
             Console.WriteLine("***************************************");
         }
+
 
 
 
