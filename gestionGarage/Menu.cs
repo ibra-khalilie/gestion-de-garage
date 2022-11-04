@@ -279,7 +279,14 @@ namespace gestionGarage
 
 
 
-        public Garage Garage { get => garage; set => garage = value; }
+        public Garage Garage { get => garage; set => garage = value; 
+        
+
+        
+        }
+
+
+        
     }
 
 
