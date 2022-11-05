@@ -53,7 +53,7 @@ namespace gestionGarage
                                 Prix Total : {7:0.00} ", Id, Nom, PrixHT, NbEssieu, Volume, Poid, CalculerTaxe(), PrixTotal()
                                 );
                                 moteur.Afficher();
-          
+                            
 
         }
 

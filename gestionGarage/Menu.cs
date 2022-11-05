@@ -42,7 +42,9 @@ namespace gestionGarage
                     {
                         
                         case 1:
+                            Console.ForegroundColor = ConsoleColor.Yellow;
                             garage.Afficher();
+                            Console.ForegroundColor = ConsoleColor.Cyan;
                             break;
                         case 2:
                             AjouterVehicule(garage);
@@ -65,21 +67,25 @@ namespace gestionGarage
                             SupprimerOption(garage);
                             break;
                         case 8:
+                            Console.ForegroundColor = ConsoleColor.Yellow;
                             Console.WriteLine("Liste des options dans le garage\n");
                             foreach (Option option in garage.Option)
                             {
                              
                                 Console.WriteLine("ID : "+option.Id+ "| NOM : "+option.Nom+" | PRIX : "+option.Prix);
                             }
-                         
+                            Console.ForegroundColor = ConsoleColor.Cyan;
+
                             break;
                         case 9:
-                            Console.WriteLine("Liste des marques disponibles : ");
-                            foreach (Vehicule v in garage.Vehicules)
+                            Console.ForegroundColor = ConsoleColor.Yellow;
+                            Console.WriteLine("Liste des marques ");
+                            foreach (int i in Enum.GetValues(typeof(Marque)))
                             {
-                                Console.WriteLine(v.Marque);
-                         
+                                Console.WriteLine($" {i} : {Enum.GetName(typeof(Marque), i)}");
                             }
+
+                            Console.ForegroundColor = ConsoleColor.Cyan;
 
                             break;
                         case 10:
@@ -87,14 +93,22 @@ namespace gestionGarage
                         
                             break;
                         case 11:
+                            Console.ForegroundColor = ConsoleColor.Yellow;
+                            Console.WriteLine("Liste des marques ");
 
-                            foreach (Moteur moteur in garage.Moteurs)
+                            foreach (int i in Enum.GetValues(typeof(TypeMoteur)))
                             {
-                        
-                                    moteur.Afficher();
-                                
+                                Console.WriteLine($" {i} : {Enum.GetName(typeof(TypeMoteur), i)}");
                             }
-                            
+                            Console.ForegroundColor = ConsoleColor.Cyan;
+
+                            /*  foreach (Moteur moteur in garage.Moteurs)
+                              {
+
+                                      moteur.Afficher();
+
+                              }*/
+
                             break;
 
                         case 12:
@@ -124,7 +138,7 @@ namespace gestionGarage
                     2. Ajouter un vehicule
                     3. Suprimer un vehicule
                     4. Sélectionner un vehicule
-                    5. Affciher les option à un vehicules
+                    5. Afficher les option à un vehicules
                     6. Ajouer les options d'un vehicule
                     7. Supprimer option
                     8. Afficher les options
@@ -409,13 +423,14 @@ namespace gestionGarage
         public void SupprimerOption(Garage garage)
         {
 
-
+            Console.ForegroundColor = ConsoleColor.Yellow;
             for (int i = 0; i < garage.Vehicules.Count; i++)
             {
 
                 Console.WriteLine("Id :  : " + garage.Vehicules[i].Id +
                                    "\nNom : " + garage.Vehicules[i].Nom + "\n");
             }
+            Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("Veuiller séléctionner l'id du vehicule");
             int choix = GetChoix();
 
