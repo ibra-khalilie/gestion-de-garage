@@ -55,7 +55,7 @@ namespace gestionGarage
            // Identifiant du vehicule : {0} ", id);
        
             
-                moteur.Afficher();
+            moteur.Afficher();
         
             AfficherOptions();
 

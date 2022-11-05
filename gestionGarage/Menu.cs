@@ -398,12 +398,13 @@ namespace gestionGarage
                     {
                         Console.WriteLine("l'indefifiant de cette option n'existe pas");
                     }
-                    else if (garage.Option[m].Id == choix)
+                    else if (garage.Option[m].Id == choixU)
                     {
 
                       
                         garage.Vehicules[j].AjouterOption((garage.Option[m]));
-                        Console.WriteLine(@"
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine(@"
                                  ----------------------
                                      - Succèes !-
                                 - Ajout bien reussi - ");

@@ -38,8 +38,8 @@ namespace gestionGarage
             Option o1 = new Option("Climatiseur", 200);
             Option o2 = new Option("Camera", 400);
             Option o3 = new Option("Dectecteur de fatique", 500);
-            //Option o4 = new Option("", 500);
-            //Option o5 = new Option("tt", 500);
+            Option o4 = new Option("JeuxdeLumiere", 500);
+            Option o5 = new Option("AA45", 500);
             Voiture v = new Voiture("name", 2500, Marque.renault, moteur, 250, 120, 2, 2);
             v.AjouterOption(o1);
             v.AjouterOption(o2);
@@ -47,7 +47,9 @@ namespace gestionGarage
             garage.Option.Add(o1);
             garage.Option.Add(o2);
             garage.Option.Add(o3);
-            v.PrixTotal();
+            garage.Option.Add(o4);
+            garage.Option.Add(o5);
+          //  v.PrixTotal();
             // v.Afficher();
 
             //  Vehicule v2 = new Voiture("voiture2", 100, Marque.renault, "moteur2", 200, TypeMoteur.essence, 40, 500, 6, 5);
