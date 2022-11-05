@@ -15,21 +15,27 @@ namespace gestionGarage
         protected Marque marque;
         protected Moteur moteur;
         protected List<Option> options = new List<Option>();
-        protected List<Moteur> moteurs = new List<Moteur>();
 
-       
+       public Vehicule()
+        {
+            increment++;
+            this.Id = increment;
+        }
 
-        public Vehicule(string nom, decimal prixHT, Marque marque,string nomMoteur, int puissance, TypeMoteur type)
+
+        
+
+
+        public Vehicule(string nom, decimal prixHT, Marque marque, Moteur moteur)
         {
             increment++;
             this.Id = increment;
             this.Nom = nom;
             this.prixHT = prixHT;
-            this.marque = marque;
+            this.Marque = marque;
+            this.Moteur = moteur;
+     
 
-            //A discuter
-            moteur = new Moteur(nomMoteur,puissance, type);
-            moteurs.Add(moteur);
             
         }  
        
@@ -47,10 +53,9 @@ namespace gestionGarage
            // Console.WriteLine(@"
            // Identifiant du vehicule : {0} ", id);
        
-            foreach (Moteur moteur in moteurs)
-            {
+            
                 moteur.Afficher();
-            }
+        
             AfficherOptions();
 
 
@@ -61,21 +66,35 @@ namespace gestionGarage
         }
 
         public abstract decimal CalculerTaxe();
-   
 
-        public decimal PrixTotal() {
 
-            decimal resultat = 0.00m ;
+        public decimal PrixTotal()
+        {
+
+            decimal TotalOption = 0;
             foreach (Option option in options)
             {
-                resultat = option.Prix + prixHT ;
+                TotalOption += option.Prix;
             }
-            
 
-
-
-            return resultat;
+            return TotalOption + CalculerTaxe() + PrixHT;
         }
+
+
+        public int SetGetControl(int val, int min, int max)
+        {
+            int value = val;
+
+            while (value < min || value > max)
+            {
+                Console.WriteLine("Entrer une valeur comprise entre {0} et {1} ", min, max);
+                value = Convert.ToInt32(Console.ReadLine());
+
+            }
+
+            return value;
+        }
+
 
 
         public int CompareTo(object obj)
@@ -93,7 +112,12 @@ namespace gestionGarage
 
         public string Nom { get => nom; set => nom = value; }
         public int Id { get => id; set => id = value; }
+        public decimal PrixHT { get => prixHT; set => prixHT = value; }
         public List<Option> Options { get => options; set => options = value; }
+     
+     
+        public Marque Marque { get => marque; set => marque = value; }
+        public Moteur Moteur { get => moteur; set => moteur = value; }
     }
 
 

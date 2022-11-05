@@ -16,26 +16,38 @@ namespace gestionGarage
         private TypeMoteur type;
    
 
+
+        public Moteur()
+        {
+            increment++;
+    
+        }
         public Moteur(string nom , int puissance, TypeMoteur type)
         {
             increment++;
             this.id = increment;
-            this.nom = nom; 
-            this.puissance = puissance;
-            this.type = type;
+            this.Nom = nom; 
+            this.Puissance = puissance;
+            this.Type = type;
 
         }
+
+        public string Nom { get => nom; set => nom = value; }
+        public int Puissance { get => puissance; set => puissance = value; }
+        public int Id { get => id; }
+        internal TypeMoteur Type { get => type; set => type = value; }
 
         public void Afficher()
         {
 
 
-            Console.WriteLine(@"
-            Numero du moteur : {0}
-            Nom du moteur : {0}
-            Puissance : {0}
-            Type de motteur : {0}",id,nom,puissance, type
-           );
+
+             Console.WriteLine(@" 
+                                   m-o-t-e-u-r
+                                Numero du moteur : {0}
+                                Nom du moteur : {1}
+                                Puissance : {2}
+                                Type de motteur : {3}",id,Nom,Puissance,Type);
         }
 
     }

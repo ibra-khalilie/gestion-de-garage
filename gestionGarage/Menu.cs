@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
+using System.Security.Cryptography;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using static System.Collections.Specialized.BitVector32;
@@ -19,13 +21,17 @@ namespace gestionGarage
             this.Garage = garage;
 
         }
+        public Menu()
+        {
+            
+        }
    
 
         public void Start()
         {
             int choixMenu = 0;
 
-            while (choixMenu != 13)
+            while (choixMenu != 14)
             {
                 AfficherMenu(garage);
                 try
@@ -58,20 +64,45 @@ namespace gestionGarage
                         case 7:
                             SupprimerOption(garage);
                             break;
+                        case 8:
+                            Console.WriteLine("Liste des options dans le garage\n");
+                            foreach (Option option in garage.Option)
+                            {
+                             
+                                Console.WriteLine("ID : "+option.Id+ "| NOM : "+option.Nom+" | PRIX : "+option.Prix);
+                            }
+                         
+                            break;
                         case 9:
+                            Console.WriteLine("Liste des marques disponibles : ");
+                            foreach (Vehicule v in garage.Vehicules)
+                            {
+                                Console.WriteLine(v.Marque);
+                         
+                            }
 
                             break;
                         case 10:
-
+                            garage.AjouterMoteur();
+                        
                             break;
                         case 11:
 
+                            foreach (Moteur moteur in garage.Moteurs)
+                            {
+                        
+                                    moteur.Afficher();
+                                
+                            }
+                            
                             break;
+
                         case 12:
                             break;
 
                         case 13:
                             break;
+                        
                     }
                 }
                 catch (Exception e)
@@ -93,24 +124,24 @@ namespace gestionGarage
                     2. Ajouter un vehicule
                     3. Suprimer un vehicule
                     4. Sélectionner un vehicule
-                    5. Affciher les options d'un vehicules
+                    5. Affciher les option à un vehicules
                     6. Ajouer les options d'un vehicule
                     7. Supprimer option
-                    8. Affcicher les options
+                    8. Afficher les options
                     9. Afficher les marques
-                   10. Afficher les types de moteurs
-                   11. Charger le garage
-                   12. Sauvergarder le garage
-                   13. Quitter l'application
+                   10. Ajouter Moteur
+                   11. Afficher les types de moteurs
+                   12. Charger le garage
+                   13. Sauvergarder le garage
+                   14. Quitter l'application
              ");
         }
-
 
 
         public void AjouterVehicule(Garage garage)
         {
             int typeVehicule = 0;
-            while (typeVehicule != 5)
+            while (typeVehicule != 4)
             {
                 Console.WriteLine(@"
                 Entrez le type de vehicule
@@ -118,7 +149,7 @@ namespace gestionGarage
                     2. Moto
                     3. Camion
                     4. Retour
-                    5. Annuler"); ;
+                            "); ;
 
                 typeVehicule = Convert.ToInt32(Console.ReadLine());
                 try
@@ -126,18 +157,49 @@ namespace gestionGarage
                     switch (typeVehicule)
                     {
                         case 1:
-                            Vehicule voiture = GestionEntreeVoiture();
+                            Vehicule voiture = AjouterUneVoiture(garage);
                             if (voiture != null)
                             {
                                 garage.AjouterVehivule(voiture);
-                                Console.WriteLine("l'ajout est bien pris en compte");
+                                Console.ForegroundColor = ConsoleColor.Green;
+                                Console.WriteLine(@"
+                                 ----------------------
+                                     - Succèes !-
+                                - Ajout bien reussi - ");
+
+                                Console.ForegroundColor = ConsoleColor.Cyan;
                             }
                             break;
                         case 2:
 
-                
+                            Vehicule moto = AjouterUneMoto(garage);
+                            if (moto != null)
+                            {
+                                garage.AjouterVehivule(moto);
+                                Console.ForegroundColor = ConsoleColor.Green;
+                                Console.WriteLine(@"
+                                 ----------------------
+                                     - Succèes !-
+                                - Ajout bien reussi - ");
+
+                                Console.ForegroundColor = ConsoleColor.Cyan;
+                            }
+
                             break;
                         case 3:
+
+                            Vehicule camion = AjouterUnCamion(garage);
+                            if (camion != null)
+                            {
+                                garage.AjouterVehivule(camion);
+                                Console.ForegroundColor = ConsoleColor.Green;
+                                Console.WriteLine(@"
+                                 ----------------------
+                                     - Succèes !-
+                                - Ajout bien reussi - ");
+
+                                Console.ForegroundColor = ConsoleColor.Cyan;
+                            }
 
                             break;
 
@@ -154,9 +216,8 @@ namespace gestionGarage
 
 
 
-        public void SupprimerVehicule(Garage garage)
+        public void SupprimerVehicule(Garage garage)      
 
-            
         {
            
             for(int i = 0; i < garage.Vehicules.Count; i++)
@@ -214,7 +275,45 @@ namespace gestionGarage
             }
             else if (garage.Vehicules[j].Id == choix)
             {
-              garage.Vehicules[j].Afficher();
+                Console.WriteLine("Voudriez-vous ajouter une option ce un vehicule ?\n " +
+                    "      1 : Oui \n " +
+                    "      2 : Non");
+                int rep = Convert.ToInt32(Console.ReadLine());
+                if (rep == 1)
+                {
+                    Console.WriteLine("Veuiller entrer le numéro de l'option");
+
+                    AfficherLesOptionsDuGarages(garage);
+
+                    int choixU = Convert.ToInt32(Console.ReadLine());
+                
+                    int m = 0;
+                    while (m != garage.Option.Count && garage.Option[m].Id != choixU)
+                    {
+
+                        m++;
+                    }
+                    if (m == garage.Option.Count)
+                    {
+                        Console.WriteLine("l'indefifiant de cette option n'existe pas");
+                    }
+                    else if (garage.Option[m].Id == choix)
+                    {
+                      
+                        garage.Vehicules[j].AjouterOption((garage.Option[m]));
+                        Console.WriteLine(@"
+                                 ----------------------
+                                     - Succèes !-
+                                - Ajout bien reussi - ");
+
+                        Console.ForegroundColor = ConsoleColor.Cyan;
+                    }
+
+                }
+                else
+                {
+                    Console.WriteLine("Choix non incorrect");
+                }
            
 
             }
@@ -277,6 +376,11 @@ namespace gestionGarage
             else if (garage.Vehicules[j].Id == choix)
             {
 
+
+                AfficherLesOptionsDuGarages(garage);
+
+/*
+
                 Option option = new Option();
                 Console.Write("Mettez le nom de l'option : ");
                 String nomOp = Console.ReadLine();
@@ -286,12 +390,18 @@ namespace gestionGarage
                 option.Prix = prixOp;
                 garage.Vehicules[j].AjouterOption(option);
                 Console.WriteLine("L'option est bien enregistré pour le vehicule : "+ garage.Vehicules[j].Nom);
-
+*/
             }
 
+        }
 
 
-
+        public void AfficherLesOptionsDuGarages(Garage garage)
+        {
+            foreach (Option option in garage.Option)
+            {
+                option.Afficher();
+            }
         }
 
 
@@ -345,28 +455,6 @@ namespace gestionGarage
             }
 
 
-
-
-
-
-
-
-            /*   if (TrouverOption(garage.Vehicules[j].Options, choixOption))
-               {
-                   bool res = garage.Vehicules[j].Options.Remove(garage.Vehicules[j].Options[choixOption]);
-                   if (res) { Console.WriteLine("L'option est a été bien supprimer"); }
-                   else { Console.WriteLine("Echec de suppression !"); }
-               }
-               else
-               {
-                   Console.WriteLine("Identifiant option inexistant");
-               }
-            */
-
-
-
-
-
         
 
         }
@@ -404,40 +492,124 @@ namespace gestionGarage
 
 
 
-    public Vehicule GestionEntreeVoiture()
+    public Vehicule AjouterUneVoiture(Garage garage)
         {
+            Voiture voiture = new Voiture();
+
             Console.Write("Entrer le nom de la voiture : ");
             string nom = Console.ReadLine();
+            voiture.Nom = nom;
+
+
 
             Console.Write("Entrer le prix : ");
             decimal prix = Convert.ToDecimal(Console.ReadLine());
+            voiture.PrixHT = prix;
 
             Console.WriteLine("Choisir une des marques suivantes :  ");
             Marque marque = ChoisirMarque();
+            voiture.Marque = marque;
 
-            Console.Write("Entrer la puissance: ");
-            int puissance = Convert.ToInt32(Console.ReadLine());
-
-            Console.WriteLine("Entrer le type de moteur : ");
-            TypeMoteur moteur = ChoisirMoteur();
-
-            Console.WriteLine("Entrer le nom du moteur: ");
-            String nomMoteur = Console.ReadLine();
+            Console.WriteLine ("Veuiller choisir l'id d'un Moteur : ");
+            Moteur moteur = ChoisirMoteur(garage);
+            voiture.Moteur = moteur;
+           
 
             Console.Write("Entrer la taille du coffre:");
+            int cofre = Convert.ToInt32(Console.ReadLine());
+            voiture.TailleCoffre = cofre;
 
-            int cofrre = Convert.ToInt32(Console.ReadLine());
+
             Console.Write("Entrer le nombre de cheveaux fiscaux :");
-
             int cFiscaux = Convert.ToInt32(Console.ReadLine());
+            voiture.ChevauxFiscaux = cFiscaux;
+
             Console.Write("Entrer le nombre de siège ");
             int nbSiege = Convert.ToInt32(Console.ReadLine());
-           
+            voiture.NbSiege = cFiscaux;
+
             Console.Write("Entrer le nombre de porte ");
             int nbPorte = Convert.ToInt32(Console.ReadLine());
+            voiture.NbPorte = nbPorte;
 
-           return new Voiture(nom, prix, marque, nomMoteur, puissance, moteur, cofrre, cFiscaux, nbSiege, nbPorte);
+            return voiture;
+           
         }
+
+        public Vehicule AjouterUneMoto(Garage garage) {
+
+
+            Moto moto = new Moto();
+            Console.Write("Entrer le nom de la moto : ");
+            string nom = Console.ReadLine();
+            moto.Nom = nom;
+
+
+
+            Console.Write("Entrer le prix : ");
+            decimal prix = Convert.ToDecimal(Console.ReadLine());
+            moto.PrixHT = prix;
+
+            Console.WriteLine("Choisir une des marques suivantes :  ");
+            Marque marque = ChoisirMarque();
+            moto.Marque = marque;
+
+            Console.WriteLine("Veuiller choisir l'id d'un Moteur : ");
+            Moteur moteur = ChoisirMoteur(garage);
+            moto.Moteur = moteur;
+
+            Console.WriteLine("Veuiller entrez la taille du cylindre: ");
+            int cylindre= Convert.ToInt32(Console.ReadLine()); ;
+            moto.Cylindre = cylindre;
+
+
+            return moto;
+        }
+
+
+        public Vehicule AjouterUnCamion(Garage garage)
+        {
+
+
+            Camion camion = new Camion();
+            Console.Write("Entrer le nom du camion : ");
+            string nom = Console.ReadLine();
+            camion.Nom = nom;
+
+            Console.Write("Entrer le prix : ");
+            decimal prix = Convert.ToDecimal(Console.ReadLine());
+            camion.PrixHT = prix;
+
+            Console.WriteLine("Choisir une des marques suivantes :  ");
+            Marque marque = ChoisirMarque();
+            camion.Marque = marque;
+
+            Console.WriteLine("Veuiller choisir l'id d'un Moteur : ");
+            Moteur moteur = ChoisirMoteur(garage);
+            camion.Moteur = moteur;
+
+
+            Console.WriteLine("Veuiller entrez le nombre de d'essieu: ");
+            int nbEssieu = Convert.ToInt32(Console.ReadLine());
+            camion.NbEssieu = nbEssieu;
+
+
+            Console.WriteLine("Veuiller entrez le poid: ");
+            int poid = Convert.ToInt32(Console.ReadLine());
+            camion.Poid = poid;
+
+            Console.WriteLine("Veuiller entrez le volume: ");
+            int volume = Convert.ToInt32(Console.ReadLine());
+            camion.Volume = volume;
+
+
+            return camion;
+        }
+
+
+
+
+
 
 
 
@@ -454,14 +626,15 @@ namespace gestionGarage
             try 
             {
                 choix = Convert.ToInt32(Console.ReadLine());
-                do
-                   {
-                    
-                       Console.WriteLine("Choix incorrect : ");
-                       choix = Convert.ToInt32(Console.ReadLine());
 
-                   } while (choix < 0 || choix> 4);
-                 
+
+                while (choix < 0 || choix > 4)
+                {
+                    Console.WriteLine("Choix incorrect : ");
+                     choix = Convert.ToInt32(Console.ReadLine());
+                }
+                
+             
                 switch (choix)
                     {
                         case 0:
@@ -488,12 +661,39 @@ namespace gestionGarage
             return choixMarque;
         }
 
+        public Moteur ChoisirMoteur(Garage garage)
+        {
+            Moteur moteur = null;
 
-   
+            for (int i = 0; i < garage.Moteurs.Count; i++)
+            {
+                Console.WriteLine("ID : " + garage.Moteurs[i].Id + " | Nom : " + garage.Moteurs[i].Nom + " | Puissance : " + garage.Moteurs[i].Puissance);
+            }
+
+
+            int choix = Convert.ToInt32(Console.ReadLine());
+
+            int j = 0;
+            while (j != garage.Moteurs.Count && garage.Moteurs[j].Id != choix)
+            {
+                j++;
+            }
+            if (j == garage.Moteurs.Count)
+            {
+                Console.WriteLine("l'indefifiant de ce moteur n'existe pas");
+            }
+            else if (garage.Moteurs[j].Id == choix)
+            {
+
+                moteur =  garage.Moteurs[j];
+
+            }
+            return moteur;
+        }
 
 
 
-        public TypeMoteur ChoisirMoteur()
+        public TypeMoteur ChoisirTypeMoteur()
         {
             TypeMoteur choixMoteur = TypeMoteur.electrique;
             int choix = 0;
@@ -505,12 +705,13 @@ namespace gestionGarage
             try
             {
                 choix = Convert.ToInt32(Console.ReadLine());
-                do
+
+                while (choix < 0 || choix > 4)
                 {
                     Console.WriteLine("Choix incorrect : ");
                     choix = Convert.ToInt32(Console.ReadLine());
+                }
 
-                } while (choix < 0 || choix > 4);
 
                 switch (choix)
                 {
@@ -578,19 +779,9 @@ namespace gestionGarage
 
 
 
-        public Garage Garage { get => garage; set => garage = value; }
-
-
-
-
-
-
-
-
-
-
-
-
+        public Garage Garage {
+            get => garage; set => garage = value;
+        }
 
 
 
@@ -599,13 +790,13 @@ namespace gestionGarage
         class MenuException : Exception
         {
             public MenuException() :
-                base("Le choix n'est pas compris entre 1 et 13")
+                base("Le choix n'est pas compris entre 1 et 14")
             {
                 
             }
 
             public MenuException(string message) 
-                :base("Le choix n'est pas compris entre 1 et 13")
+                :base("Le choix n'est pas compris entre 1 et 14")
             {
             }
 
@@ -621,7 +812,7 @@ namespace gestionGarage
     }
 
 
-
+    
 
 
    

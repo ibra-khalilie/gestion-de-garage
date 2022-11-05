@@ -15,7 +15,7 @@ namespace gestionGarage
         private decimal prix;
 
       
-        public Option() { }
+        public Option() { increment++; }
         public Option(string nom, decimal prix)
         {
             increment++;
@@ -31,16 +31,16 @@ namespace gestionGarage
 
         public void Afficher()
         {
-            
 
-            Console.WriteLine("Oprion : "+ id);
-            Console.WriteLine("Nom : "+nom);
-            Console.WriteLine("Prix : "+prix);
+
+            Console.WriteLine(@"
+                                 
+                                Option n° : {0}
+                                Nom    : {1}
+                                Prix   : {2}",Id,Nom,Prix);
+
 
         }
-
-
-        
 
     }
 }

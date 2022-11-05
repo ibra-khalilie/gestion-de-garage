@@ -12,15 +12,19 @@ namespace gestionGarage
         private readonly decimal prixTaxe = 0.3m;
         private int cylindre;
 
-        public int Cylindre { get => cylindre; set => cylindre = value; }
-        public int Cylindre1 { get => cylindre; set => cylindre = value; }
-
-        public Moto( string nom, decimal prixHT, Marque marque,int cylindre, string nomMoteur, int puissance, TypeMoteur type)
-            : base( nom, prixHT, marque,nomMoteur,puissance,type)
+        public Moto(string nom, decimal prixHT, Marque marque, Moteur moteur,int cylindre) : base(nom, prixHT, marque, moteur)
         {
             this.Cylindre = cylindre;
-        
         }
+
+        public Moto()
+        {
+        }
+
+        public int Cylindre { get => cylindre; set => cylindre = value; }
+     
+
+     
 
         public override decimal CalculerTaxe()
         {
@@ -32,13 +36,18 @@ namespace gestionGarage
         {
           
             Console.WriteLine(@"
-            Identifiant du vehicule : {
-            Nom : {0} 
-            Prix Hors Taxe : {0:0.00} 
-            Marque : {0} 
-            Cylindre : {0} 
-            Taxe du Moto : {0:0.00} ",Nom,prixHT,marque,cylindre, CalculerTaxe());
-            base.Afficher();
+                      ********************************************
+                               Identifiant : {0}
+                               Nom : {1} 
+                               Prix Hors Taxe : {2:0.00} 
+                               Marque : {3} 
+                               Cylindre : {4} 
+                               Taxe du Moto : {5:0.00} ",Id,Nom,prixHT,Marque,cylindre, CalculerTaxe());
+                               moteur.Afficher();
+                               AfficherOptions();
+                               Console.WriteLine(@"
+           
+                                Prix Total : {0:0.00}", PrixTotal());
 
         }
 

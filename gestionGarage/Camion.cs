@@ -8,41 +8,56 @@ namespace gestionGarage
 {
     internal class Camion : Vehicule
     {
-   
+
         private int nbEssieu;
         private int poid;
         private int volume;
 
         private readonly decimal prixTaxe = 50m;
 
-        public Camion(string nom, decimal prixHT, Marque marque, string nomMoteur, int puissance, TypeMoteur type, int nbEssieu, int poid, int volume) :
-            base(nom, prixHT, marque,nomMoteur,puissance,type)
+
+        public Camion()
+        {
+        }
+
+        public Camion(string nom, decimal prixHT, Marque marque, Moteur moteur, Option option,int nbEssieu, int poid, int volume) : base(nom, prixHT, marque, moteur)
         {
             this.NbEssieu = nbEssieu;
             this.Poid = poid;
             this.Volume = volume;
-         }
+        }
 
         public int NbEssieu { get => nbEssieu; set => nbEssieu = value; }
         public int Poid { get => poid; set => poid = value; }
         public int Volume { get => volume; set => volume = value; }
 
+
+
         public override decimal CalculerTaxe()
         {
             return this.NbEssieu * prixTaxe;
         }
-        
+
         public override void Afficher()
         {
-            base.Afficher();
-            Console.WriteLine("Nom de Voiture: {0} ", Nom);
-            Console.WriteLine("Prix Hors Taxe : {0:0.00} ", prixHT);
-            Console.WriteLine("Nombre de Essieux : {0} ", NbEssieu);
-            Console.WriteLine("Marque : {0} ", marque);
-            Console.WriteLine("Volume : {0} ", Volume);
-            Console.WriteLine("Poid : {0} ", Poid);
-            Console.WriteLine("Taxe du Camion : {0:0.00} ", CalculerTaxe());
-            Console.WriteLine("***************************************");
+            
+            Console.Write(@"
+                        ***************************************
+                                Matricule: {0}
+                                Nom de Voiture : {1}
+                                Prix Hors Taxe : {2:0.00}
+                                Nombre de Essieux : {3}
+                                Volume : {4}
+                                Poid : {5}
+                                Taxe du Camion : {6:0.00} 
+                                Prix Total : {7:0.00} ", Id, Nom, PrixHT, NbEssieu, Volume, Poid, CalculerTaxe(), PrixTotal()
+                                );
+                                moteur.Afficher();
+          
+
         }
+
+
+    
     }
 }
