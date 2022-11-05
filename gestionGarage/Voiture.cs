@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace gestionGarage
 {
+    [Serializable]
     internal class Voiture : Vehicule
     {
 
