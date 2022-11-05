@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace gestionGarage
 {
+    [Serializable]
     internal class Moto : Vehicule
     {
         private readonly decimal prixTaxe = 0.3m;

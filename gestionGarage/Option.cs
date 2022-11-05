@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace gestionGarage
 {
+    [Serializable]
     internal class Option
     {
         private static int increment = 0;

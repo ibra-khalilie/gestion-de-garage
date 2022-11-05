@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace gestionGarage
 {
+    [Serializable]
     internal class Garage
     {
         private string nom;

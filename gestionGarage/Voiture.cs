@@ -96,7 +96,7 @@ namespace gestionGarage
                                 moteur.Afficher();
                                 AfficherOptions();
 
-                               Console.WriteLine(@"
+                                Console.WriteLine(@"
                                 Taxe : {0:0.00} 
                                 Prix Total : {1:0.00}",CalculerTaxe(), PrixTotal());
 

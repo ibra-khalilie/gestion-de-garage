@@ -11,6 +11,7 @@ using static System.Collections.Specialized.BitVector32;
 
 namespace gestionGarage
 {
+    
     internal class Menu
     {
        
@@ -751,6 +752,17 @@ namespace gestionGarage
             return choixMoteur;
         }
 
+
+        public void Sauvergarde()
+        {
+
+        }
+
+
+        public void Charger()
+        {
+
+        }
 
 
 

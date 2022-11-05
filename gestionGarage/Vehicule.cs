@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace gestionGarage
 {
+    [Serializable]
     internal abstract class Vehicule : IComparable
     {
         private static int increment = 0;
