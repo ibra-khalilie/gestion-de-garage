@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -113,9 +115,18 @@ namespace gestionGarage
                             break;
 
                         case 12:
+                            if (Charger("dataUsers.bin") == null)
+                            {
+                                Console.WriteLine("Chargement non réussi");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Chargement non réussi");
+                            };
                             break;
 
                         case 13:
+                            Sauvergarde(garage.Vehicules,"dataUsers.bin");
                             break;
                         
                     }
@@ -135,7 +146,7 @@ namespace gestionGarage
             Console.WriteLine(@"
          [--------- Bienvenue dans {0} garage ------]", garage.Nom);
             Console.WriteLine(@"
-                    1. Affciher les vehicules
+                    1. Afficher les vehicules
                     2. Ajouter un vehicule
                     3. Suprimer un vehicule
                     4. Sélectionner un vehicule
@@ -788,19 +799,48 @@ namespace gestionGarage
         }
 
 
-        public void Sauvergarde()
+        public void Sauvergarde(List<Vehicule> vehicule, string path)
         {
+            BinaryFormatter formatter = new BinaryFormatter();
+            FileStream flux = null;
+            try
+            {
+                flux = new FileStream(path, FileMode.Create, FileAccess.Write);
+                formatter.Serialize(flux, vehicule);
+                flux.Flush();
+            }
+            catch { }
+            finally
+            {
+                //On ferme le flux
+                if (flux != null) flux.Close();
+            }
+
+
 
         }
 
 
-        public void Charger()
+        public  List<Vehicule> Charger(string path)
         {
-
+            BinaryFormatter formatter = new BinaryFormatter();
+            FileStream flux = null;
+            try
+            {
+                flux = new FileStream(path, FileMode.Open, FileAccess.Read);
+                return (List<Vehicule>)formatter.Deserialize(flux);
+            }
+            catch
+            {
+                return default(List<Vehicule>);
+            }
+            finally
+            {
+                if (flux != null) flux.Close();
+            }
         }
 
 
-        
 
         public int GetChoixMenu()
         {

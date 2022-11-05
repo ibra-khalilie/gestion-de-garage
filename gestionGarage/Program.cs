@@ -115,8 +115,13 @@ namespace gestionGarage
                     TailleCoffre = 200,
                     PrixHT = 20000,
                 });
+
                 Sauvergarde(vehicule, "data.bin");
+
+                List<Vehicule> vehicule1 = Charger<List<Vehicule>>("data.bin");
+                Console.WriteLine(vehicule1[0].Nom);
             }
+          
          
             new Menu(garage).Start();
           

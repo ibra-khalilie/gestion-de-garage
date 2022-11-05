@@ -20,11 +20,9 @@ namespace gestionGarage
        public Vehicule()
         {
             increment++;
-            
+            this.Id = increment;
         }
 
-
-        
 
 
         public Vehicule(string nom, decimal prixHT, Marque marque, Moteur moteur)
