@@ -140,7 +140,7 @@ namespace gestionGarage
                     3. Suprimer un vehicule
                     4. Sélectionner un vehicule
                     5. Afficher les option d'un vehicules
-                    6. Ajouer des options à d'un vehicule
+                    6. Ajouter des options à un vehicule
                     7. Supprimer option
                     8. Afficher les options
                     9. Afficher les marques
@@ -267,7 +267,13 @@ namespace gestionGarage
                     bool res = garage.Vehicules.Remove(garage.Vehicules[j]);
                     if (res == true)
                     {
-                        Console.WriteLine("Suppression bien réussi");
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine(@"
+                                 ----------------------
+                                     - Succèes !-5
+
+                               - Suppression bien reussi - ");
+                        Console.ForegroundColor = ConsoleColor.Cyan;
                     }
                     else
                     {
@@ -395,6 +401,7 @@ namespace gestionGarage
                     else if (garage.Option[m].Id == choix)
                     {
 
+                      
                         garage.Vehicules[j].AjouterOption((garage.Option[m]));
                         Console.WriteLine(@"
                                  ----------------------
@@ -402,10 +409,14 @@ namespace gestionGarage
                                 - Ajout bien reussi - ");
 
                         Console.ForegroundColor = ConsoleColor.Cyan;
-                    }
+                }
+                else
+                {
+                    Console.WriteLine("je sort et je n'ai rien rajouter");
+                }
 
                 
-                
+      
 
 
             }
@@ -473,7 +484,14 @@ namespace gestionGarage
                     int rep = Convert.ToInt32(Console.ReadLine());
                     if (rep == 1)
                     {
-                        if (garage.Vehicules[j].Options.Remove(garage.Vehicules[j].Options[k])) Console.WriteLine("Option bien supprimé");
+                        if (garage.Vehicules[j].Options.Remove(garage.Vehicules[j].Options[k]))
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.WriteLine(@"
+                                 ----------------------
+                                     - Succèes !-
+
+                             - Suppression bien reussi - ");
+                        Console.ForegroundColor = ConsoleColor.Cyan;
 
                     }
                     else
@@ -781,7 +799,7 @@ namespace gestionGarage
         }
 
 
-
+        
 
         public int GetChoixMenu()
         {
