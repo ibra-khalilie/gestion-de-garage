@@ -18,7 +18,13 @@ namespace gestionGarage
         static void Main(string[] args)
         {
             Console.ForegroundColor = ConsoleColor.Cyan;
+
+            
             Garage garage = new Garage("Go-MAM");
+
+            //List<Garage> garages = garage.Charger<List<Garage>>("dataUsers.bin");
+            //garage.Sauvergarde(garages, "dataUsers.bin");
+
 
 
 

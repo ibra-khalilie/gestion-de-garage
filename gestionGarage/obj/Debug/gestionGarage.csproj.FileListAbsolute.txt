@@ -14,3 +14,11 @@ C:\Users\yahya\source\repos\G2\gestion-de-garage\gestionGarage\obj\Debug\gestion
 C:\Users\yahya\source\repos\G2\gestion-de-garage\gestionGarage\obj\Debug\gestionGarage.csproj.CoreCompileInputs.cache
 C:\Users\yahya\source\repos\G2\gestion-de-garage\gestionGarage\obj\Debug\gestionGarage.exe
 C:\Users\yahya\source\repos\G2\gestion-de-garage\gestionGarage\obj\Debug\gestionGarage.pdb
+C:\Users\yahya\source\repos\G3\gestion-de-garage\gestionGarage\bin\Debug\gestionGarage.exe.config
+C:\Users\yahya\source\repos\G3\gestion-de-garage\gestionGarage\bin\Debug\gestionGarage.exe
+C:\Users\yahya\source\repos\G3\gestion-de-garage\gestionGarage\bin\Debug\gestionGarage.pdb
+C:\Users\yahya\source\repos\G3\gestion-de-garage\gestionGarage\obj\Debug\gestionGarage.csproj.AssemblyReference.cache
+C:\Users\yahya\source\repos\G3\gestion-de-garage\gestionGarage\obj\Debug\gestionGarage.csproj.SuggestedBindingRedirects.cache
+C:\Users\yahya\source\repos\G3\gestion-de-garage\gestionGarage\obj\Debug\gestionGarage.csproj.CoreCompileInputs.cache
+C:\Users\yahya\source\repos\G3\gestion-de-garage\gestionGarage\obj\Debug\gestionGarage.exe
+C:\Users\yahya\source\repos\G3\gestion-de-garage\gestionGarage\obj\Debug\gestionGarage.pdb

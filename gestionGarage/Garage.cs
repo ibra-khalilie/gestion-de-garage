@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -104,6 +106,47 @@ namespace gestionGarage
   
         public void TrierVehicule() {
             Vehicules.Sort();
+        }
+
+
+        public void Sauvergarde(List<Garage> garages, string path)
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+            FileStream flux = null;
+            try
+            {
+                flux = new FileStream(path, FileMode.Create, FileAccess.Write);
+                formatter.Serialize(flux, garages);
+                flux.Flush();
+            }
+            catch { }
+            finally
+            {
+                //On ferme le flux
+                if (flux != null) flux.Close();
+            }
+
+
+
+        }
+
+        public List<Garage> Charger<T>(string path)
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+            FileStream flux = null;
+            try
+            {
+                flux = new FileStream(path, FileMode.Open, FileAccess.Read);
+                return (List<Garage>)formatter.Deserialize(flux);
+            }
+            catch
+            {
+                return default(List<Garage>);
+            }
+            finally
+            {
+                if (flux != null) flux.Close();
+            }
         }
 
 
