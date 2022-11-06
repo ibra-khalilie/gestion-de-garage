@@ -732,24 +732,31 @@ namespace gestionGarage
                 Console.WriteLine("ID : " + garage.Moteurs[i].Id + " | Nom : " + garage.Moteurs[i].Nom + " | Puissance : " + garage.Moteurs[i].Puissance);
             }
 
-
-            int choix = Convert.ToInt32(Console.ReadLine());
-
-            int j = 0;
-            while (j != garage.Moteurs.Count && garage.Moteurs[j].Id != choix)
+            do
             {
-                j++;
-            }
-            if (j == garage.Moteurs.Count)
-            {
-                Console.WriteLine("l'indefifiant de ce moteur n'existe pas");
-            }
-            else if (garage.Moteurs[j].Id == choix)
-            {
+                int choix = Convert.ToInt32(Console.ReadLine());
 
-                moteur =  garage.Moteurs[j];
+                int j = 0;
+                while (j != garage.Moteurs.Count && garage.Moteurs[j].Id != choix)
+                {
+                    j++;
+                }
 
-            }
+
+                if (j == garage.Moteurs.Count)
+                {
+                    Console.WriteLine("l'indefifiant de ce moteur n'existe pas, veuillez choisir un moteur :");
+                }
+                else if (garage.Moteurs[j].Id == choix)
+                {
+
+                    moteur = garage.Moteurs[j];
+
+                }
+
+            }while(moteur == null);
+           
+
             return moteur;
         }
 

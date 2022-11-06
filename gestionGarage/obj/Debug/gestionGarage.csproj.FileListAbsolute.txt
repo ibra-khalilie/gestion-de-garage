@@ -6,3 +6,11 @@ D:\PROJET_IPI\.NET\gestion-de-garage\gestionGarage\obj\Debug\gestionGarage.cspro
 D:\PROJET_IPI\.NET\gestion-de-garage\gestionGarage\obj\Debug\gestionGarage.csproj.CoreCompileInputs.cache
 D:\PROJET_IPI\.NET\gestion-de-garage\gestionGarage\obj\Debug\gestionGarage.exe
 D:\PROJET_IPI\.NET\gestion-de-garage\gestionGarage\obj\Debug\gestionGarage.pdb
+C:\Users\yahya\source\repos\G2\gestion-de-garage\gestionGarage\bin\Debug\gestionGarage.exe.config
+C:\Users\yahya\source\repos\G2\gestion-de-garage\gestionGarage\bin\Debug\gestionGarage.exe
+C:\Users\yahya\source\repos\G2\gestion-de-garage\gestionGarage\bin\Debug\gestionGarage.pdb
+C:\Users\yahya\source\repos\G2\gestion-de-garage\gestionGarage\obj\Debug\gestionGarage.csproj.AssemblyReference.cache
+C:\Users\yahya\source\repos\G2\gestion-de-garage\gestionGarage\obj\Debug\gestionGarage.csproj.SuggestedBindingRedirects.cache
+C:\Users\yahya\source\repos\G2\gestion-de-garage\gestionGarage\obj\Debug\gestionGarage.csproj.CoreCompileInputs.cache
+C:\Users\yahya\source\repos\G2\gestion-de-garage\gestionGarage\obj\Debug\gestionGarage.exe
+C:\Users\yahya\source\repos\G2\gestion-de-garage\gestionGarage\obj\Debug\gestionGarage.pdb
